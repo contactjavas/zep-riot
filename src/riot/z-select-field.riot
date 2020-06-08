@@ -1,0 +1,14 @@
+<z-select-field class="field">
+  <div class="control">
+    <select name={props.name} id={props.id} class="input select" placeholder={props.placeholder} required={props.isRequired}>
+      <template if={props.options}>
+        <option each={opt in props.options} value={opt.value}>{opt.text}</option>
+      </template>
+      <template if={!props.options}>
+        <slot />
+      </template>
+    </select>
+    <hr>
+    <label for={props.id}>{props.label}</label>
+  </div>
+</z-select-field>

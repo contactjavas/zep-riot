@@ -1,0 +1,39 @@
+<z-date-field class="field">
+  <div class="control">
+    <input type='text' name={props.name} id={props.id} class={className} placeholder={props.placeholder} required={props.isRequired}>
+    <hr>
+    <label for={props.id}>{props.label}</label>
+  </div>
+
+  <script>
+  export default {
+    onBeforeMount(props) {
+      this.className = 'input use-datepicker';
+      this.className = props.isFilled ? this.className + ' is-filled' : this.className;
+    },
+
+    onMounted() {
+      const picker = this.$('.use-datepicker');
+
+      setupDatepicker();
+
+      function setupDatepicker() {
+        if (!picker) return;
+
+        let opts = {};
+
+        opts.altInput = true;
+        opts.altFormat = "j F Y";
+        opts.dateFormat = "Y-m-d";
+
+        if (!picker.dataset.defaultDate) {
+          opts.defaultDate = Date.now();
+        }
+
+        picker.addEventListener("change", () => Zep.switchIsFilled(picker));
+        flatpickr(picker, opts);
+      }
+    }
+  }
+  </script>
+</z-date-field>

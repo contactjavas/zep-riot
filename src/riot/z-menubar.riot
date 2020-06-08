@@ -1,0 +1,187 @@
+<z-menubar>
+  <div class="menubar">
+    <div class="container">
+
+      <div class="left-menubar">
+        <div class="menubar-item menubar-logo">
+          <a href="index.html" target="_blank" class="logo-link">
+            <img src="images/sample-logo.png" alt="Logo" class="logo">
+          </a>
+        </div>
+
+        <ul class="menubar-item top-menu main-menu">
+          <li class="has-submenu">
+            <a href="">Produksi</a>
+            <ul class="submenu">
+              <li>
+                <a href="">Daftar Produk</a>
+              </li>
+              <li>
+                <a href="">Tambah Produk</a>
+              </li>
+            </ul>
+          </li>
+          <li class="has-submenu">
+            <a href="">HRD</a>
+            <ul class="submenu">
+              <li class="has-submenu">
+                <a href="">Overview</a>
+                <ul class="submenu">
+                  <li>
+                    <a href="">Daftar Hari Besar</a>
+                  </li>
+                  <li>
+                    <a href="payroll/karyawan/">Daftar Karyawan</a>
+                  </li>
+                  <li>
+                    <a href="">Daftar Jadwal</a>
+                  </li>
+                  <li>
+                    <a href="">Daftar Keterangan Absen</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="has-submenu">
+                <a href="">Actions</a>
+                <ul class="submenu">
+                  <li>
+                    <a href="">Input Jadwal</a>
+                  </li>
+                  <li>
+                    <a href="">Input Jadwal (per karyawan)</a>
+                  </li>
+                  <li>
+                    <a href="">Input Jadwal (per dep-unit-bagian)</a>
+                  </li>
+                  <li class="separator">
+                  </li>
+                  <li>
+                    <a href="">Input Berita Acara Lembur</a>
+                  </li>
+                  <li>
+                    <a href="">Input Berita Acara Lembur Terusan</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="has-submenu">
+                <a href="">Reports</a>
+                <ul class="submenu">
+                  <li>
+                    <a href="">Absen Harian</a>
+                  </li>
+                  <li>
+                    <a href="">Absen per Departemen</a>
+                  </li>
+                  <li class="separator">
+                  </li>
+                  <li>
+                    <a href="">Laporan Terlambat / Pulang Cepat</a>
+                  </li>
+                  <li>
+                    <a href="">Laporan Absen Tidak Lengkap</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="has-submenu">
+                <a href="">Tools</a>
+                <ul class="submenu">
+                  <li>
+                    <a href="">Data Template</a>
+                  </li>
+                  <li>
+                    <a href="">Lakukan Backup Data</a>
+                  </li>
+                  <li>
+                    <a href="">Lakukan Restore Data</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="has-submenu">
+            <a href="">Penjualan</a>
+            <ul class="submenu">
+              <li class="has-submenu">
+                <a href="">Overview</a>
+                <ul class="submenu">
+                  <li>
+                    <a href="penjualan/">Daftar Penjualan</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="has-submenu">
+                <a href="">Action</a>
+                <ul class="submenu">
+                  <li>
+                    <a href="penjualan/pesanan/add/">Input Pesanan</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="has-submenu">
+            <a href="">Inventory</a>
+            <ul class="submenu">
+              <li>
+                <a href="">Daftar Barang</a>
+              </li>
+              <li>
+                <a href="">Tambah Barang</a>
+              </li>
+            </ul>
+          </li>
+        </ul><!-- .top-menu -->
+      </div><!-- .left-menubar -->
+      <div class="right-menubar">
+
+        <div class="menubar-item menubar-hamburger mobile-menu-trigger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div><!-- .menubar-item -->
+
+        <div class="menubar-item menubar-add">
+          <i class="fas fa-plus add-icon"></i>
+          <div class="add-area">
+            <ul class="left-add-area">
+              <li>
+                <a href='payroll/karyawan/add/'>Tambah Karyawan</a>
+              </li>
+              <li>
+                <a href='payroll/jadwal/add/'>Tambah Jadwal Payroll</a>
+              </li>
+              <li>
+                <a href='payroll/lembur/add/'>Tambah Lembur Payroll</a>
+              </li>
+            </ul>
+            <ul class="right-add-area">
+              <li>
+                <a href='penjualan/pesanan/add/'>Tambah Pesanan</a>
+              </li>
+              <li>
+                <a href='penawaran/add/'>Tambah Penawaran</a>
+              </li>
+            </ul>
+          </div>
+        </div><!-- .menubar-item -->
+        
+        <div class="menubar-item menubar-avatar">
+          <img src="images/sample-avatar.jpg" alt="avatar" class="avatar">
+          <span>
+            Hey Javas
+          </span>
+        </div><!-- .menubar-item -->
+
+      </div><!-- .right-menubar -->
+      
+    </div><!-- .container -->
+  </div><!-- .menubar -->
+
+  <script>
+  export default {
+    onBeforeMount() {
+      this.baseUrl = Zep.baseUrl;
+    }
+  }
+  </script>
+</z-menubar>

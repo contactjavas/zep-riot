@@ -1,0 +1,36 @@
+<z-multiselect-field class="field">
+  <div class="control">
+    <select name={props.name} id={props.id} class="input select use-multijs" placeholder={props.placeholder} required={props.isRequired} multiple>
+      <template if={props.options}>
+        <option each={opt in props.options} value={opt.value}>{opt.text}</option>
+      </template>
+      <template if={!props.options}>
+        <slot />
+      </template>
+    </select>
+    <hr>
+    <label for={props.id}>{props.label}</label>
+  </div>
+
+  <script>
+  import multi from "multi.js/dist/multi-es6.min.js";
+
+  export default {
+    onMounted() {
+      const field = this.$('.use-multijs');
+
+      function setupMultiJS() {
+        if (!field) return;
+        const placeholder = field.getAttribute("placeholder");
+        let opts = {};
+
+        if (placeholder) opts.search_placeholder = placeholder;
+
+        multi(field, opts);
+      }
+
+      setupMultiJS();
+    }
+  }
+  </script>
+</z-multiselect-field>

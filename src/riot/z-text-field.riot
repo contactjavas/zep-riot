@@ -1,0 +1,15 @@
+<z-text-field class="field">
+  <div class="control">
+    <input type={props.type ? props.type : 'text'} name={props.name} id={props.id} class="input" placeholder={props.placeholder} required={props.isRequired}>
+    <hr>
+    <label for={props.id}>{props.label}</label>
+  </div>
+
+  <script>
+  export default {
+    onMounted() {
+      Zep.setupTextFields(this.$$('.field .input'));
+    }
+  }
+  </script>
+</z-text-field>

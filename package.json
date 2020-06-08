@@ -1,0 +1,32 @@
+{
+  "name": "zep-ui",
+  "version": "1.0.0",
+  "description": "Client side UI for Zep's app",
+  "main": "index.html",
+  "scripts": {
+    "start": "parcel index.html --open --no-cache --no-source-maps",
+    "build": "parcel build index.html --no-source-maps"
+  },
+  "author": "Javas",
+  "license": "MIT",
+  "dependencies": {
+    "@ag-grid-community/all-modules": "^23.1.1",
+    "@fortawesome/fontawesome-free": "^5.13.0",
+    "@riotjs/route": "^5.3.2",
+    "ag-grid-community": "^23.1.1",
+    "awesomplete": "^1.1.5",
+    "css": "^2.2.4",
+    "flatpickr": "^4.6.3",
+    "multi.js": "^0.5.1",
+    "riot": "^4.12.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/preset-env": "^7.10.2",
+    "@riotjs/compiler": "^4.8.5",
+    "@riotjs/hot-reload": "^4.0.1",
+    "@riotjs/parcel-plugin-riot": "^4.0.1",
+    "parcel-bundler": "^1.12.4",
+    "sass": "^1.26.7"
+  }
+}

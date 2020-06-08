@@ -1,0 +1,340 @@
+<z-tambah-karyawan>
+  <div class="main-screen">
+    <div class="container">
+
+      <z-titlebar title="Tambah Baru" links={breadcrumb} />
+
+      <div class="main-content">
+        <form name="/api/simpanKry" action="" method="POST">
+          <div class="panel">
+            <z-panel-header title="Tambah Karyawan Baru" />
+            <div class="panel-content">
+              <div class="columns">
+                <div class="panel-left-content">
+  
+                  <div class="panel-info">
+                    <h4 class="info-title">Data Diri</h4>
+                    <p class="info-description">Silakan isi data diri pasien secara lengkap dan teliti.</p>
+                  </div>
+  
+                  <div class="fields material">
+  
+                    <z-date-field id="tanggal_pendaftaran" id="tanggal_pendaftaran" label="Tanggal Daftar" placeholder="Tanggal Pendaftaran" is-filled="true" is-required="true" />
+  
+                    <div class="field">
+                      <div class="control">
+                        <input type="number" name="nik" id="nik" class="input" placeholder="No. NIK" autocomplete="off"
+                          required>
+                        <hr>
+                        <label for="nik">No. NIK</label>
+                      </div>
+                    </div>
+  
+                    <div class="field">
+                      <div class="control">
+                        <textarea name="alamat" id="alamat" class="input textarea" placeholder="Masukkan alamat"
+                          autocomplete="off" required></textarea>
+                        <hr>
+                        <label for="alamat">Alamat</label>
+                      </div>
+                    </div>
+  
+                    <div class="field">
+                      <div class="control">
+                        <input type="text" name="kota" id="kota" class="input" placeholder="Nama Kota / Kabupaten"
+                          autocomplete="off" required>
+                        <hr>
+                        <label for="kota">Kota / Kabupaten</label>
+                      </div>
+                    </div>
+  
+                    <div class="field">
+                      <div class="control">
+                        <input type="text" name="telepon" id="telepon" class="input" placeholder="No. Telepon"
+                          autocomplete="off" required>
+                        <hr>
+                        <label for="telepon">No. Telepon</label>
+                      </div>
+                    </div>
+  
+                    <div class="field">
+                      <div class="control">
+                        <input type="text" name="tanggal_lahir" id="tanggal_lahir" class="input use-datepicker"
+                          placeholder="Pilih tanggal Lahir" autocomplete="off" required>
+                        <hr>
+                        <label for="tanggal_lahir">Tanggal Lahir</label>
+                      </div>
+                    </div>
+  
+                    <div class="field">
+                      <div class="control">
+                        <input type="text" name="tempat_lahir" id="tempat_lahir" class="input" placeholder="Tempat Lahir"
+                          autocomplete="off" required>
+                        <hr>
+                        <label for="tempat_lahir">Tempat Lahir</label>
+                      </div>
+                    </div>
+  
+                    <div class="field">
+                      <div class="control">
+                        <select name="jenis_kelamin" id="jenis_kelamin" class="input select" required>
+                          <option value="male">Laki-laki</option>
+                          <option value="female">Perempuan</option>
+                        </select>
+                        <hr>
+                        <label for="jenis_kelamin">Jenis Kelamin</label>
+                      </div>
+                    </div>
+  
+                    <div class="field">
+                      <div class="control">
+                        <select name="agama" id="agama" class="input select" required>
+                          <option value="islam">Islam</option>
+                          <option value="kristen">Kristen</option>
+                          <option value="khatolik">Khatolik</option>
+                          <option value="hindu">Hindu</option>
+                          <option value="budha">Budha</option>
+                          <option value="lainnya">Lainnya</option>
+                        </select>
+                        <hr>
+                        <label for="agama">Agama</label>
+                      </div>
+                    </div>
+  
+                    <div class="field">
+                      <div class="control">
+                        <input type="text" name="pendidikan" id="pendidikan" class="input" placeholder="Pendidikan Terakhir" autocomplete="off"
+                          required>
+                        <hr>
+                        <label for="pendidikan">Pendidikan</label>
+                      </div>
+                    </div>
+  
+                    <div class="field">
+                      <div class="control">
+                        <input type="text" name="no_ktp" id="no_ktp" class="input" placeholder="Masukkan Nomor KTP" autocomplete="off"
+                          required>
+                        <hr>
+                        <label for="no_ktp">No. KTP</label>
+                      </div>
+                    </div>
+  
+                    <div class="field">
+                      <div class="control">
+                        <input type="text" name="no_bpjs_kesehatan" id="no_bpjs_kesehatan" class="input" placeholder="Nomor BPJS Kesehatan" autocomplete="off"
+                          required>
+                        <hr>
+                        <label for="no_bpjs_kesehatan">No. BPJS Kesehatan</label>
+                      </div>
+                    </div>
+  
+                    <div class="field">
+                      <div class="control">
+                        <input type="text" name="grade_bpjs_kesehatan" id="grade_bpjs_kesehatan" class="input" placeholder="Grade BPJS Kesehatan" autocomplete="off"
+                          required>
+                        <hr>
+                        <label for="grade_bpjs_kesehatan">Grade BPJS Kesehatan</label>
+                      </div>
+                    </div>
+  
+                    <div class="field">
+                      <div class="control">
+                        <input type="text" name="nama_ibu" id="nama_ibu" class="input" placeholder="Masukkan Nama Ibu" autocomplete="off"
+                          required>
+                        <hr>
+                        <label for="nama_ibu">Nama Ibu</label>
+                      </div>
+                    </div>
+  
+                    <div class="field">
+                      <div class="control">
+                        <input type="text" name="no_rekening" id="no_rekening" class="input" placeholder="Masukkan Nomor Rekening" autocomplete="off"
+                          required>
+                        <hr>
+                        <label for="no_rekening">No. Rekening</label>
+                      </div>
+                    </div>
+  
+                  </div>
+  
+                </div>
+  
+                <div class="panel-right-content">
+  
+                  <div class="panel-info">
+                    <h4 class="info-title">Data Pekerjaan</h4>
+                    <p class="info-description">Silakan isi data pekerjaan pasien secara lengkap dan teliti.</p>
+                  </div>
+  
+                  <div class="fields material">
+  
+                    <div class="field">
+                      <div class="control">
+                        <input type="text" name="tanggal_masuk_kerja" id="tanggal_masuk_kerja" class="input use-datepicker placeholder="Tanggal Masuk Kerja"
+                          autocomplete="off" required>
+                        <hr>
+                        <label for="tanggal_masuk_kerja">Tanggal Masuk</label>
+                      </div>
+                    </div>
+  
+                    <div class="field">
+                      <div class="control">
+                        <input type="text" name="tanggal_keluar_kerja" id="tanggal_keluar_kerja" class="input use-datepicker placeholder="Tanggal Keluar Kerja"
+                          autocomplete="off" required>
+                        <hr>
+                        <label for="tanggal_keluar_kerja">Tanggal Keluar</label>
+                      </div>
+                    </div>
+  
+                    <div class="field">
+                      <div class="control">
+                        <input type="text" name="departemen" id="departemen" class="input" placeholder="Nama Departemen"
+                          autocomplete="off" required>
+                        <hr>
+                        <label for="departemen">Departemen</label>
+                      </div>
+                    </div>
+  
+                    <div class="field">
+                      <div class="control">
+                        <input type="text" name="unit" id="unit" class="input" placeholder="Nama Unit"
+                          autocomplete="off" required>
+                        <hr>
+                        <label for="unit">Unit</label>
+                      </div>
+                    </div>
+  
+                    <div class="field">
+                      <div class="control">
+                        <input type="text" name="bagian" id="bagian" class="input" placeholder="Nama Bagian"
+                          autocomplete="off" required>
+                        <hr>
+                        <label for="bagian">Bagian</label>
+                      </div>
+                    </div>
+  
+                    <div class="field">
+                      <div class="control">
+                        <input type="text" name="kode_gaji" id="kode_gaji" class="input" placeholder="Masukkan Kode Gaji"
+                          autocomplete="off" required>
+                        <hr>
+                        <label for="kode_gaji">Kode Gaji</label>
+                      </div>
+                    </div>
+  
+                    <div class="field">
+                      <div class="control">
+                        <select name="pangkat" id="pangkat" class="input select" required>
+                          <option value="ahli">Ahli</option>
+                          <option value="menengah">Menengah</option>
+                          <option value="pemula">Pemula</option>
+                        </select>
+                        <hr>
+                        <label for="pangkat">Pangkat</label>
+                      </div>
+                    </div>
+  
+                    <div class="field">
+                      <div class="control">
+                        <select name="jabatan" id="jabatan" class="input select" required>
+                          <option value="operasional">Anggota</option>
+                          <option value="admin">Admin</option>
+                          <option value="operasional">Operasional</option>
+                          <option value="management">Management</option>
+                        </select>
+                        <hr>
+                        <label for="jabatan">Jabatan</label>
+                      </div>
+                    </div>
+  
+                    <div class="field">
+                      <div class="control">
+                        <select name="status_pegawai" id="status_pegawai" class="input select" required>
+                          <option value="kontrak">Rekomendasi</option>
+                          <option value="tetap">Rekomendasi</option>
+                          <option value="seleksi">Seleksi</option>
+                        </select>
+                        <hr>
+                        <label for="status_pegawai">Status Pegawai</label>
+                      </div>
+                    </div>
+  
+                    <div class="field">
+                      <div class="control">
+                        <select name="jam_kerja" id="jam_kerja" class="input select" required>
+                          <option value="shift_pagi">Shift Pagi</option>
+                          <option value="shift_siang">Shift Siang</option>
+                          <option value="shift_malam">Shift Malam</option>
+                          <option value="full">Full</option>
+                        </select>
+                        <hr>
+                        <label for="jam_kerja">Jam Kerja</label>
+                      </div>
+                    </div>
+  
+                    <div class="field">
+                      <div class="control">
+                        <select name="hari_kerja" id="hari_kerja" class="input select" required>
+                          <option value="1">1 Hari</option>
+                          <option value="2">2 Hari</option>
+                          <option value="3">3 Hari</option>
+                          <option value="4">4 Hari</option>
+                          <option value="5">5 Hari</option>
+                          <option value="6">6 Hari</option>
+                          <option value="7">7 Hari</option>
+                        </select>
+                        <hr>
+                        <label for="hari_kerja">Hari Kerja</label>
+                      </div>
+                    </div>
+
+                    <z-multiselect-field name="jadwal" id="jadwal" label="Jadwal" placeholder="Pilih Hari" is-required="1">
+                      <option value="senin">Senin</option>
+                      <option value="selasa">Selasa</option>
+                      <option value="rabu">Rabu</option>
+                      <option value="kamis">Kamis</option>
+                      <option value="jumat">Jumat</option>
+                      <option value="sabtu">Sabtu</option>
+                      <option value="minggu">Minggu</option>
+                    </z-multiselect-field>
+  
+                  </div>
+  
+                </div>
+              </div>
+            </div>
+            <footer class="panel-footer">
+              <button type="submit" class="button is-secondary">Simpan</button>
+            </footer>
+          </div>
+        </form>
+      </div><!-- .main-content -->
+
+    </div><!-- .container -->
+  </div><!-- .main-screen -->
+
+  <script>
+  export default {
+    onBeforeMount(props, state) {
+      this.breadcrumb = [
+        {
+          text: 'Payroll',
+          url: '/payroll/'
+        },
+        {
+          text: 'Karyawan',
+          url: '/payroll/karyawan/'
+        },
+        {
+          text: 'Tambah',
+          isText: true
+        }
+      ];
+    },
+
+    onMounted(props, state) {
+      //
+    }
+  }
+  </script>
+</z-tambah-karyawan>

@@ -1,0 +1,35 @@
+<z-app>
+  <div id="app">
+    <router>
+      <z-menubar />
+
+      <route path="/">
+        <z-daftar-karyawan />
+      </route>
+
+      <route path="/payroll">
+        <z-daftar-karyawan />
+      </route>
+
+      <route path="/payroll/karyawan/">
+        <z-daftar-karyawan />
+      </route>
+
+      <route path="/payroll/karyawan/add/">
+        <z-tambah-karyawan />
+      </route>
+
+      <route path="/penjualan/">
+        <z-daftar-penjualan />
+      </route>
+
+      <z-page-footer />
+    </router>
+  </div>
+
+  <script>
+  export default {
+    onMounted() {}
+  }
+  </script>
+</z-app>

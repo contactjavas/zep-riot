@@ -1,0 +1,34 @@
+@charset "utf-8";
+
+@import '../scss/config/breakpoints';
+@import '../scss/config/variables';
+
+@import '../scss/mixins/devices-mq';
+@import '../scss/mixins/dimensions-mq';
+
+@import '../scss/base/ui';
+@import '../scss/container/ui';
+@import '../scss/topbar/ui';
+@import '../scss/menubar/ui';
+@import '../scss/toolbar/ui';
+@import '../scss/sidebar/ui';
+@import '../scss/breadcrumb/ui';
+@import '../scss/login/ui';
+@import '../scss/panel/ui';
+@import '../scss/field/ui';
+@import '../scss/button/ui';
+@import '../scss/table/ui';
+@import '../scss/range/ui';
+@import '../scss/page-footer/ui';
+
+.field-equal-sign {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 8px;
+  width: 38px;
+  height: 24px;
+  color: $secondary-color;
+  background-color: $color-white-darker;
+  border-radius: 4px;
+}

@@ -1,0 +1,138 @@
+<z-daftar-karyawan>
+  <div class="main-screen">
+    <div class="container">
+
+      <z-titlebar title="Daftar Karyawan" links={breadcrumb} />
+
+      <div class="main-content">
+        <form name="cari_karyawan" action="" method="POST">
+          <div class="panel">
+            <z-panel-header title="Daftar Karyawan" />
+            <div class="panel-content">
+
+              <div class="fields material has-3">
+                <z-select-field name="departemen" id="departemen" label="Departemen" is-required="1">
+                  <option value="finishing">Finishing</option>
+                  <option value="warehouse">Warehouse</option>
+                </z-select-field>
+
+                <z-select-field name="unit" id="unit" label="Unit" is-required="1">
+                  <option value="revisi_produk">Revisi Produk</option>
+                  <option value="packing">Packing</option>
+                </z-select-field>
+
+                <z-text-field name="nama" id="nama" label="Nama / NIK" placeholder="Cari Nama / NIK" is-required="1" />
+              </div>
+
+              <div id="tabel-daftar-karyawan" class="grid-table ag-theme-alpine" style="width: 100%; height: 400px;"></div>
+            </div>
+          </div>
+        </form>
+      </div><!-- .main-content -->
+
+    </div><!-- .container -->
+  </div><!-- .main-screen -->
+
+  <script>
+  export default {
+    onBeforeMount(props, state) {
+      this.breadcrumb = [
+        {
+          text: 'Payroll',
+          url: '/payroll/'
+        },
+        {
+          text: 'Karyawan',
+          isText: true
+        }
+      ];
+    },
+
+    onMounted(props, state) {
+      const form = this.$('form');
+      let ajax = new XMLHttpRequest();
+      if (!form) return;
+
+      const fields = {
+        departemen: document.querySelector('#departemen'),
+        unit: document.querySelector('#unit'),
+        nama: document.querySelector('#nama')
+      };
+
+      const table = document.querySelector('#tabel-daftar-karyawan');
+
+      // specify the columns
+      const columnDefs = [
+        { headerName: "Kode Karyawan", field: "kode" },
+        { headerName: "Nama Karyawan", field: "nama" },
+        { headerName: "Level", field: "level" },
+        { headerName: "Grade", field: "grade" },
+        { headerName: "Jenis Kelamin", field: "jenis_kelamin" },
+        { headerName: "Status", field: "status" },
+        { headerName: "Jabatan", field: "jabatan" },
+        { headerName: "Departemen", field: "departemen" },
+        { headerName: "Unit", field: "unit" },
+        { headerName: "Tempat Lahir", field: "tempat_lahir" },
+        { headerName: "Tanggal Lahir", field: "tanggal_lahir" },
+        { headerName: "Umur", field: "umur" },
+        { headerName: "Tanggal Mulai Bekerja", field: "tanggal_mulai_bekerja" },
+        { headerName: "Lama Bekerja", field: "lama_bekerja" },
+        { headerName: "Hitungan Cuti", field: "hitungan_cuti" },
+        { headerName: "Nomor KTP", field: "no_ktp" },
+        { headerName: "Alamat", field: "alamat" },
+        { headerName: "Nomor HP", field: "no_hp" },
+        { headerName: "No. Rekening Bank", field: "no_rekening_bank" },
+        { headerName: "No. BPJS Ketenagakerjaan", field: "no_bpjs_kt" },
+        { headerName: "Grade BPJS Ketenagakerjaan", field: "grade_bpjs_kt" },
+        { headerName: "No. BPJS Kesehatan", field: "no_bpjs_kes" },
+        { headerName: "Grade BPJS Kesehatan", field: "grade_bpjs_kes" }
+      ];
+
+      // specify the data
+      var rowData = [];
+
+      // let the grid know which columns and what data to use
+      var gridOptions = {
+        columnDefs: columnDefs,
+        rowData: rowData
+      };
+
+      // create the grid passing in the div to use together with the columns & data we want to use
+      var gridTable = new Grid(table, gridOptions);
+      var gridApi = gridTable.gridOptions.api;
+
+      function updateTable(rows) {
+        gridApi.setRowData(rows);
+      }
+
+      function sendRequest(query) {
+        let ajaxUrl = Zep.apiUrl + '/tampilKaryawan?nama=' + query;
+
+        ajax.abort();
+        ajax.open("GET", ajaxUrl, true);
+        ajax.send();
+        ajax.onload = function () {
+          let list = JSON.parse(ajax.responseText);
+          
+          updateTable(list);
+        };
+      };
+
+      fields.nama.addEventListener('keypress', (e) => {
+        if (
+          e.key === 'Escape' || e.key === 'Esc' || e.keyCode === 27 ||
+          e.key === 'Enter' || e.keyCode === 13 ||
+          e.key === 'ArrowLeft' || e.keyCode === 37 ||
+          e.key === 'ArrowUp' || e.keyCode === 38 ||
+          e.key === 'ArrowRight' || e.keyCode === 39 ||
+          e.key === 'ArrowDown' || e.keyCode === 40
+        ) {
+          return
+        }
+
+        sendRequest(fields.nama.value);
+      });
+    }
+  }
+  </script>
+</z-daftar-karyawan>

@@ -1,0 +1,21 @@
+<z-titlebar>
+  <div class="columns titlebar">
+    <div class="column w50 left-titlebar">
+      <h2 class="page-title">{props.title}</h2>
+    </div>
+    <div class="column w50 right-titlebar">
+      <nav class="breadcrumb">
+        <ul>
+          <li each={link in props.links}>
+            <template if={!link.isText}>
+              <a href={link.url}>{link.text}</a>
+            </template>
+            <template if={link.isText}>
+              <span>{link.text}</span>
+            </template>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div><!-- .titlebar -->
+</z-titlebar>

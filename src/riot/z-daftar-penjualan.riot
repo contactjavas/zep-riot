@@ -1,0 +1,215 @@
+<z-daftar-penjualan>
+  <div class="main-screen">
+    <div class="container">
+
+      <z-titlebar title="Daftar Penjualan" links={breadcrumb} />
+
+      <div class="main-content">
+          <form name="filter_daftar_penjualan" action="filterDaftarPenjualan" method="POST">
+            <div class="panel">
+              <z-panel-header title="Daftar Penjualan" />
+              <div class="panel-content">
+
+                <div class="fields material has-3">
+
+                  <z-date-field id="tanggal_dari" id="tanggal_dari" label="Dari Tanggal" placeholder="Dari Tanggal" is-filled="true" is-required="true" />
+
+                  <div class="field">
+                    <div class="control">
+                      <input type="text" name="tanggal_sampai" id="tanggal_sampai" class="input use-datepicker" data-default-date="2020-07-01" placeholder="Hingga Tanggal"
+                        required>
+                      <hr>
+                      <label for="tanggal_sampai">Hingga Tanggal</label>
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <div class="control">
+                      <input type="text" name="nama_kasir" id="nama_kasir" class="input" placeholder="Masukkan Nama Kasir" required>
+                      <hr>
+                      <label for="nama_kasir">Nama Kasir</label>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div id="tabel-daftar-penjualan" class="grid-table ag-theme-alpine" style="width: 100%; height: 400px;"></div>
+              </div>
+            </div>
+          </form>
+        </div><!-- .main-content -->
+
+    </div><!-- .container -->
+  </div><!-- .main-screen -->
+
+  <script>
+  export default {
+    onBeforeMount(props, state) {
+      this.breadcrumb = [
+        {
+          text: 'Penjualan',
+          isText: true
+        }
+      ];
+    },
+
+    onMounted(props, state) {
+      const form = this.$('form');
+      let ajax = new XMLHttpRequest();
+      if (!form) return;
+
+      const fields = {
+        kode_pesanan: document.querySelector("#kode_pesanan"),
+        tanggal_dari: document.querySelector("#tanggal_dari"),
+        tanggal_sampai: document.querySelector("#tanggal_sampai"),
+        kasir: document.querySelector("#nama_kasir"),
+      };
+
+      const table = document.querySelector("#tabel-daftar-penjualan");
+
+      // specify the columns
+      const columnDefs = [
+        {
+          headerName: "Kode Pesanan",
+          field: "kode_pesanan",
+          resizable: true,
+          filter: "agTextColumnFilter",
+        },
+        {
+          headerName: "Tanggal Pemesanan",
+          field: "tanggal_pemesanan",
+          resizable: true
+        },
+        {
+          headerName: "Cabang",
+          field: "cabang",
+          resizable: true,
+          filter: "agTextColumnFilter",
+        },
+        {
+          headerName: "Kasir",
+          field: "kasir",
+          resizable: true,
+          filter: "agTextColumnFilter",
+        },
+        {
+          headerName: "Customer",
+          field: "customer",
+          resizable: true,
+          filter: "agTextColumnFilter",
+        },
+        {
+          headerName: "Sales",
+          field: "sales",
+          resizable: true,
+          filter: "agTextColumnFilter",
+        },
+        {
+          headerName: "Total Harga",
+          field: "total_harga",
+          resizable: true,
+          filter: "agNumberColumnFilter",
+        },
+        {
+          headerName: "Action",
+          field: "action",
+          resizable: true,
+          width: 150,
+          cellRenderer: renderActionCell,
+        },
+      ];
+
+      function renderActionCell(params) {
+        let buttons = document.createElement("div");
+        buttons.className = "buttons action-buttons";
+
+        let editButton = document.createElement("button");
+        editButton.type = "button";
+        editButton.className = "button is-small is-rounded edit-button";
+        editButton.innerHTML = '<i class="fas fa-edit"></i>';
+
+        let deleteButton = document.createElement("button");
+        deleteButton.type = "button";
+        deleteButton.className = "button is-small is-rounded delete-button";
+        deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i>';
+
+        buttons.appendChild(editButton);
+        buttons.appendChild(deleteButton);
+
+        return buttons;
+      }
+
+      // specify the data
+      var rowData = [];
+
+      // let the grid know which columns and what data to use
+      var gridOptions = {
+        columnDefs: columnDefs,
+        rowData: rowData,
+        onGridReady: function (params) {
+          params.api.sizeColumnsToFit();
+        },
+      };
+
+      // create the grid passing in the div to use together with the columns & data we want to use
+      var gridTable = new Grid(table, gridOptions);
+      var gridApi = gridTable.gridOptions.api;
+
+      function updateTable(rows) {
+        gridApi.setRowData(rows);
+      }
+
+      function sendRequest(query) {
+        let ajaxUrl = Zep.apiUrl + "/getDaftarPenjualan?kasir=" + query;
+
+        ajax.abort();
+        ajax.open("GET", ajaxUrl, true);
+        ajax.send();
+        ajax.onload = function () {
+          let list = JSON.parse(ajax.responseText);
+
+          console.log(list);
+          updateTable(list);
+        };
+      }
+
+      fields.kasir.addEventListener("keypress", (e) => {
+        if (
+          e.key === "Escape" ||
+          e.key === "Esc" ||
+          e.keyCode === 27 ||
+          e.key === "Enter" ||
+          e.keyCode === 13 ||
+          e.key === "ArrowLeft" ||
+          e.keyCode === 37 ||
+          e.key === "ArrowUp" ||
+          e.keyCode === 38 ||
+          e.key === "ArrowRight" ||
+          e.keyCode === 39 ||
+          e.key === "ArrowDown" ||
+          e.keyCode === 40
+        ) {
+          return;
+        }
+
+        sendRequest(fields.kasir.value);
+      });
+
+      function getInitialData() {
+        const ajax = new XMLHttpRequest();
+        const ajaxUrl = Zep.apiUrl + "/getDaftarPenjualan?kasir=";
+
+        ajax.open("GET", ajaxUrl, true);
+        ajax.send();
+        ajax.onload = function () {
+          const rows = JSON.parse(ajax.responseText);
+
+          updateTable(rows);
+        };
+      }
+
+      getInitialData();
+    }
+  }
+  </script>
+</z-daftar-penjualan>
